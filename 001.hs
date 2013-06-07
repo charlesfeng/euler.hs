@@ -4,7 +4,7 @@
 --shared under the mit license (http://www.opensource.org/licenses/mit)
 
 main = do
-  print $ sum $ filter (\x -> x `mod` 3 == 0 || x `mod` 5 == 0) [1..999]
+  print $ sum $ filter (\x -> x `mod` 3 == 0 || x `mod` 5 == 0) [1 .. 999]
 
 --answer: 233168
 --runtime: 0.2s
