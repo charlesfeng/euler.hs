@@ -1,10 +1,10 @@
---project euler: problem  (http://projecteuler.net/problem=)
+-- project euler: problem  (http://projecteuler.net/problem=)
 
---(c) 2013 charles feng (https://github.com/charlesfeng)
---shared under the mit license (http://www.opensource.org/licenses/mit)
+-- (c) 2013 charles feng (https://github.com/charlesfeng)
+-- shared under the mit license (http://www.opensource.org/licenses/mit)
 
 main = do
   
 
---answer: 
---runtime: 
+-- answer: 
+-- runtime: 
