@@ -8,10 +8,10 @@ m = [[8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8], [
 main = do
   print $ maximum
     [ maximum
-      [ product [ m !! (a + x) !! b           | x <- [0 .. 3] ]
-      , product [ m !! a       !! (b + x)     | x <- [0 .. 3] ]
-      , product [ m !! (a + x) !! b + x       | x <- [0 .. 3] ]
-      , product [ m !! (a + x) !! (b + 3 - x) | x <- [0 .. 3] ] ]
+      [ product [ m !! (a + x) !!  b          | x <- [0 .. 3] ]
+      , product [ m !!  a      !! (b + x)     | x <- [0 .. 3] ]
+      , product [ m !! (a + x) !!  b + x      | x <- [0 .. 3] ]
+      , product [ m !! (a + x) !! (b - x + 3) | x <- [0 .. 3] ] ]
     | a <- [0 .. 16], b <- [0 .. 16] ]
 
 -- answer: 70600674
