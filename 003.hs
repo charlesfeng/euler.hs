@@ -6,7 +6,7 @@
 import Factor
 
 main = do
-  print $ last $ factor 600851475143 2
+  print $ last $ factor 600851475143
 
 -- answer: 6857
 -- runtime: 0.2s
