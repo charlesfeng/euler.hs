@@ -12,7 +12,7 @@ main = do
       , product [ m !!  a      !! (b + x)     | x <- [0 .. 3] ]
       , product [ m !! (a + x) !!  b + x      | x <- [0 .. 3] ]
       , product [ m !! (a + x) !! (b - x + 3) | x <- [0 .. 3] ] ]
-    | a <- [0 .. 16], b <- [0 .. 16] ]
+    | a <- [0 .. 16], b <- [0 .. 16]                              ]
 
 -- answer: 70600674
 -- runtime: 0.3s
