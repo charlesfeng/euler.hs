@@ -4,7 +4,9 @@
 -- shared under the mit license (http://www.opensource.org/licenses/mit)
 
 module Minus (minus) where
-  
+
+minus :: (Ord a) => [a] -> [a] -> [a]
+
 minus (x : xs) (y : ys) = case (compare x y) of 
   LT -> x : minus xs       (y : ys)
   EQ ->     minus xs       ys

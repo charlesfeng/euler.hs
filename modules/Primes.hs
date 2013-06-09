@@ -7,6 +7,8 @@ module Primes (primes) where
 
 import Minus
 
+primes :: Int -> [Int]
+
 primes n = 2 : s [3, 5 .. n] where
   s (p : x)
     | p * p > n  = p : x

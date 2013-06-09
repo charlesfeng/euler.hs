@@ -5,8 +5,10 @@
 
 module Factor (factor) where
   
+factor :: Int -> [Int]
 factor n = factor' n 2
-  
+
+factor' :: Int -> Int -> [Int]
 factor' n f
   | f * f > n       = [n]
   | n `mod` f == 0  = f : factor' (n `div` f) 2
