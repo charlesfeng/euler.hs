@@ -5,7 +5,7 @@
 
 module Count (count) where
 
-count :: a -> [a] -> Int
+count :: (Eq a) => a -> [a] -> Int
 
 count x (y : ys)
   | x == y     = 1 + (count x ys)
