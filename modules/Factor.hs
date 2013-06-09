@@ -3,25 +3,28 @@
 -- (c) 2013 charles feng (https://github.com/charlesfeng)
 -- shared under the mit license (http://www.opensource.org/licenses/mit)
 
-module Factor (factor, pfactor) where
+module Factor (factor, pfactor, pfactor') where
 
 import Primes
   
 factor :: Int -> [Int]
-factor n = factor' n 2
+factor n = _factor n 2
 
-factor' :: Int -> Int -> [Int]
-factor' n f
+_factor :: Int -> Int -> [Int]
+_factor n f
   | f * f > n       = [n]
-  | n `mod` f == 0  = f : factor' (n `div` f) 2
-  | otherwise       = factor' n (f + 1)
+  | n `mod` f == 0  = f : _factor (n `div` f) 2
+  | otherwise       = _factor n (f + 1)
   
 pfactor :: Int -> [Int]
-pfactor n = pfactor' n 0 (primes n)
+pfactor n = _pfactor n 0 (primes n)
+  
+pfactor' :: Int -> [Int] -> [Int]
+pfactor' n ps = _pfactor n 0 ps
 
-pfactor' :: Int -> Int -> [Int] -> [Int]
-pfactor' n i p
+_pfactor :: Int -> Int -> [Int] -> [Int]
+_pfactor n i p
   | f * f > n       = [n]
-  | n `mod` f == 0  = f : pfactor' (n `div` f) 0 p
-  | otherwise       = pfactor' n (i + 1) p
+  | n `mod` f == 0  = f : _pfactor (n `div` f) 0 p
+  | otherwise       = _pfactor n (i + 1) p
   where f = p !! i
