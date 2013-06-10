@@ -2,22 +2,19 @@
 
 -- (c) 2013 charles feng (https://github.com/charlesfeng)
 -- shared under the mit license (http://www.opensource.org/licenses/mit)
-  
-cz = (map cz' [0 .. ] !!)
-  where
-    cz' n
-      | n == 1          = 1
-      | n > 999999      = _cz n
-      | n `mod` 2 == 0  = 1 + (cz $ n `div` 2)
-      | otherwise       = 1 + (cz $ 3 * n + 1)
 
-_cz n
-  | n < 1000000       = cz n
-  | n `mod` 2 == 0  = 1 + (_cz $ n `div` 2)
-  | otherwise       = 1 + (_cz $ 3 * n + 1)
+import Data.List
+import Data.Array
+import Data.Ord
+
+terms n = memo
+  where
+    memo = listArray (1, n) $ 0 : [ 1 + term n x | x <- [2 .. n] ]
+    term n x = if x' <= n then memo ! x' else 1 + term n x'
+      where x' = if even x then x `div` 2 else 3 * x + 1
 
 main = do
-  print $ head $ foldl1 (\a b -> if last b > last a then b else a) [ [x, y] | x <- [1 .. 999999], let y = cz x ]
+  print $ fst . maximumBy (comparing snd) . assocs . terms $ 1000000
 
--- answer: 
--- runtime: 
+-- answer: 837799
+-- runtime: 15.7s
