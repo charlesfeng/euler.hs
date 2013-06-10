@@ -9,7 +9,8 @@ s = foldl (\x y -> (x + y) `mod` 7) 1 m
 
 d = foldl inc [s] [ (x, y) | x <- [1901 .. 2000], y <- [0 .. 11] ]
   where inc d a = ((head d) + (m !! y) + (if y == 1 && (x `mod` 100 /= 0 || x `mod` 400 == 0) && x `mod` 4 == 0 then 1 else 0)) `mod` 7 : d
-          where x = fst a; y = snd a
+          where x = fst a
+                y = snd a
 
 main = do
   print $ foldl (\x y -> if y == 0 then x + 1 else x) 0 (init d)
