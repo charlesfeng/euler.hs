@@ -7,4 +7,4 @@ main = do
   print $ product $ head $ [[a, b, 1000 - a - b] | a <- [1 .. 1000], b <- [a .. 999 - a], a ^ 2 + b ^ 2 == (1000 - a - b) ^ 2]
 
 -- answer: 31875000
--- runtime: 1.0s
+-- runtime: 0.6s

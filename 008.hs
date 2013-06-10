@@ -12,4 +12,4 @@ main = do
   print $ maximum $ [foldl (\x y -> x * digitToInt y) 1 (take 5 x) | x <- tails s]
 
 -- answer: 40824
--- runtime: 0.3s
+-- runtime: 0.2s

@@ -21,4 +21,4 @@ main = do
     ) 0 [2 .. 9999]
 
 -- answer: 31626
--- runtime: 1.0s
+-- runtime: 0.5s

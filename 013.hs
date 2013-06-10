@@ -9,4 +9,4 @@ main = do
   putStrLn $ take 10 . show . sum $ ns
 
 -- answer: 5537376230
--- runtime: 0.3s
+-- runtime: 0.2s

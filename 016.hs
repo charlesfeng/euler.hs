@@ -9,4 +9,4 @@ main = do
   print $ sum . map digitToInt . show $ 2 ^ 1000
 
 -- answer: 1366
--- runtime: 0.3s
+-- runtime: 0.2s

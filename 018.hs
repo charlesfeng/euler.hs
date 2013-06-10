@@ -9,4 +9,4 @@ main = do
   print $ head $ foldr1 (\x y -> zipWith (+) x $ zipWith (max) (init y) (tail y)) t
 
 -- answer: 1074
--- runtime: 0.3s
+-- runtime: 0.2s

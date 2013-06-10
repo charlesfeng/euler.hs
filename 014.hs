@@ -17,4 +17,4 @@ main = do
   print $ fst . maximumBy (comparing snd) . assocs . terms $ 1000000
 
 -- answer: 837799
--- runtime: 15.7s
+-- runtime: 7.0s

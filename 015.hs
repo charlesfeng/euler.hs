@@ -7,4 +7,4 @@ main = do
   print $ product [1 .. 39] `div` (product [1 .. 19]) ^ 2
 
 -- answer: 137846528820
--- runtime: 0.3s
+-- runtime: 0.2s

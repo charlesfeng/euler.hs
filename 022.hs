@@ -14,4 +14,4 @@ main = do
   where val s = foldl (\a x -> a - 64 + ord x) 0 s
 
 -- answer: 871198282
--- runtime: 1.8s
+-- runtime: 0.8s

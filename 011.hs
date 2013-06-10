@@ -34,4 +34,4 @@ main = do
     | a <- [0 .. 16], b <- [0 .. 16]                              ]
 
 -- answer: 70600674
--- runtime: 0.3s
+-- runtime: 0.2s

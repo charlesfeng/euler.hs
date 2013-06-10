@@ -9,4 +9,4 @@ main = do
   print $ primes 120000 !! 10000
 
 -- answer: 104743
--- runtime: 1.1s
+-- runtime: 0.7s

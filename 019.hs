@@ -16,4 +16,4 @@ main = do
   print $ foldl (\x y -> if y == 0 then x + 1 else x) 0 (init d)
 
 -- answer: 171
--- runtime: 0.3s
+-- runtime: 0.2s

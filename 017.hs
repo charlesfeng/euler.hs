@@ -15,4 +15,4 @@ sh = foldl (\x y -> x + (if y /= 0 then (y + 7) * 100 + 3 * 99 else 0) + so + sn
 main = do print $ sh + 11
   
 -- answer: 21124
--- runtime: 0.3s
+-- runtime: 0.2s

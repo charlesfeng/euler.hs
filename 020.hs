@@ -9,4 +9,4 @@ main = do
   print $ sum . map digitToInt . show . product $ [1 .. 100]
 
 -- answer: 648
--- runtime: 0.3s
+-- runtime: 0.2s
