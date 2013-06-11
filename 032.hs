@@ -7,7 +7,7 @@ import Data.Char
 import Data.List
 
 pan a b = length d == 9 && (length . nub) d == length d && not ('0' `elem` d)
-  where c  = a * b
+  where c = a * b
         d = show a ++ show b ++ show c
 
 main = do
