@@ -6,8 +6,8 @@
 import Data.Set (fromList, member)
 import Primes
 
-ps    = map (show) $ primes 1000000
-pss   = fromList ps
+ps  = map (show) $ primes 1000000
+pss = fromList ps
 
 cir x = all (\x -> member x pss) $ lr x ++ rr x
   where lr x = [ drop r $ x | r <- [0 .. length x - 1] ]
