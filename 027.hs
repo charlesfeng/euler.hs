@@ -5,13 +5,15 @@
 
 import Primes
 import Data.List
+import Data.Set
 import Data.Ord
 
 ps    = primes 10000
-isP n = n `elem` (takeWhile (<= n) ps)
+pss   = fromList ps
+isP n = member n pss
 
 main = do
   print $ fst $ maximumBy (comparing snd) [ (a * b, length $ takeWhile (isP) [ n ^ 2 + a * n + b | n <- [0 ..] ]) | a <- [-999 .. 999], b <- [-999 .. 999] ]
 
 -- answer: -59231
--- runtime: 50.5s
+-- runtime: 19.1s
