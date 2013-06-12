@@ -5,11 +5,13 @@
 
 import Data.List
 import Data.Ord
+import Primes
+import Triangles
 
-tris n = length [ (a, b, c) | a <- [1 .. n `div` 2], b <- [a .. n `div` 2], let c = n - a - b, a + b + c == n, a ^ 2 + b ^ 2 == c ^ 2 ]
+ps = primes 1000
 
 main = do
-  print $ fst $ maximumBy (comparing snd) [ (n, tris n) | n <- [12 .. 1000] ]
+  print $ fst $ maximumBy (comparing snd) [ (x, length $ pyTriSum' x ps) | x <- [12 .. 1000] ]
 
 -- answer: 840
--- runtime: 142.7s
+-- runtime: 0.4s
