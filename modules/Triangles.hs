@@ -14,6 +14,7 @@ pyTriSum s = _pyTriSum s (divisors s)
 pyTriSum' :: Int -> [Int] -> [[Int]]
 pyTriSum' s ps = _pyTriSum s (divisors' s ps)
 
+_pyTriSum :: Int -> [Int] -> [[Int]]
 _pyTriSum s fs = nub $
   [ sort $ map (* (s `div` x)) [m ^ 2 + n ^ 2, m ^ 2 - n ^ 2, 2 * m * n]
   | x <- tail fs
