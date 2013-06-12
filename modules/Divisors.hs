@@ -3,10 +3,27 @@
 -- (c) 2013 charles feng (https://github.com/charlesfeng)
 -- shared under the mit license (http://www.opensource.org/licenses/mit)
 
-module Divisors (numDivisors, numDivisors', numProperDivisors, numProperDivisors', sumDivisors, sumDivisors', sumProperDivisors, sumProperDivisors') where
+module Divisors (divisors, divisors', properDivisors, properDivisors', numDivisors, numDivisors', numProperDivisors, numProperDivisors', sumDivisors, sumDivisors', sumProperDivisors, sumProperDivisors') where
 
 import Factor
+import Numeric
 import Data.List
+import Data.Char
+import Data.IntSet (toList, fromList)
+
+divisors :: Int -> [Int]
+divisors n = (toList . fromList) $ map (\a -> if a == [] then 1 else product a) $ subsequences fs
+  where fs = pfactor n
+
+divisors' :: Int -> [Int] -> [Int]
+divisors' n ps = (toList . fromList) $ map (\a -> if a == [] then 1 else product a) $ subsequences fs
+  where fs = pfactor' n ps
+
+properDivisors :: Int -> [Int]
+properDivisors n = init $ divisors n
+
+properDivisors' :: Int -> [Int] -> [Int]
+properDivisors' n ps = init $ divisors' n ps
 
 numDivisors :: Int -> Int
 numDivisors n = product $ map (\x -> 1 + length x) $ group $ pfactor n
