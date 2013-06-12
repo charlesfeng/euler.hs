@@ -3,7 +3,7 @@
 -- (c) 2013 charles feng (https://github.com/charlesfeng)
 -- shared under the mit license (http://www.opensource.org/licenses/mit)
 
-module Primes (primes) where
+module Primes (primes, isPrime, isPrime') where
 
 import Data.Array.Unboxed
 
@@ -19,3 +19,10 @@ primes n = 2 : [ x | x <- [3, 5 .. n], ps ! x ]
         a' :: UArray Int Bool
         a' = a // [ (i, False) | i <- [q, q + 2 * p .. n] ]
         t  = [ i | i <- [p + 2, p + 4 .. n], a' ! i ]
+
+isPrime :: Int -> Bool
+isPrime n = all (\a -> n `mod` a /= 0) ps
+  where ps = primes $ (ceiling . sqrt . fromIntegral) n
+
+isPrime' :: Int -> [Int] -> Bool
+isPrime' n ps = all (\a -> n `mod` a /= 0) ps
