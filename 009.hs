@@ -3,8 +3,10 @@
 -- (c) 2013 charles feng (https://github.com/charlesfeng)
 -- shared under the mit license (http://www.opensource.org/licenses/mit)
 
+import Triangles
+
 main = do
-  print $ product $ head $ [[a, b, 1000 - a - b] | a <- [1 .. 1000], b <- [a .. 999 - a], a ^ 2 + b ^ 2 == (1000 - a - b) ^ 2]
+  print $ product $ head $ pyTriSum 1000
 
 -- answer: 31875000
--- runtime: 0.6s
+-- runtime: 0.3s
