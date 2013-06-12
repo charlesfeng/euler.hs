@@ -8,12 +8,12 @@ module Mod (modInv, modPow) where
 import Numeric
 import Data.Char
 
-modInv :: Int -> Int -> Int
+modInv :: Integral a => a -> a -> a
 modInv p q
   | p == 1     = 1
   | otherwise  = ((p - modInv (q `mod` p) p) * q + 1) `div` p
 
-modPow :: Int -> Int -> Int -> Int
+modPow :: (Integral b, Integral a, Show a) => b -> a -> b -> b
 modPow b n m =
   foldl  (\a x -> (a * x) `mod` m) 1 $
   map    (\a -> fst a) $
