@@ -11,4 +11,4 @@ main = do
   print $ fst $ maximumBy (comparing snd) [ head [ (x, y) | y <- [1 .. x - 1], (10 ^ y) `mod` x == 1 ] | x <- map (toInteger) $ drop 3 $ primes 1000 ]
 
 -- answer: 983
--- runtime: 0.8s
+-- runtime: 0.3s

@@ -9,4 +9,4 @@ main = do
   print $ sum $ primes 2000000
 
 -- answer: 142913828922
--- runtime: 24.3s
+-- runtime: 1.4s

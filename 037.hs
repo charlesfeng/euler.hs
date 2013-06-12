@@ -17,4 +17,4 @@ main = do
   print $ sum [ read x | x <- drop 4 ps, cir x ]
 
 -- answer: 748317
--- runtime: 11.4s
+-- runtime: 1.6s

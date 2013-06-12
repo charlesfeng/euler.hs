@@ -16,4 +16,4 @@ main = do
   print $ (28123 * 28124 `div` 2) - (sum . toList . fromList) sums
 
 -- answer: 4179871
--- runtime: 30.2s
+-- runtime: 28.8

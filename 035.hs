@@ -16,4 +16,4 @@ main = do
   print $ length $ [ x | x <- ps, cir x ]
 
 -- answer: 55
--- runtime: 10.9s
+-- runtime: 1.5s

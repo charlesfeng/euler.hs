@@ -16,4 +16,4 @@ main = do
   print $ fst $ maximumBy (comparing snd) [ (a * b, length $ takeWhile (isP) [ n ^ 2 + a * n + b | n <- [0 ..] ]) | a <- [-999 .. 999], b <- [-999 .. 999] ]
 
 -- answer: -59231
--- runtime: 19.1s
+-- runtime: 18.1s
