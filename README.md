@@ -1,3 +1,5 @@
+![Project Euler profile](http://projecteuler.net/profile/charlesfeng.png)
+
 Working incrementally through the weekly challenges at [projecteuler.net](http://projecteuler.net/problems).
 
 Solutions also being produced in [Javascript](https://github.com/charlesfeng/euler.js) and [Python](https://github.com/charlesfeng/euler.py).
