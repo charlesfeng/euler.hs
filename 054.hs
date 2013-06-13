@@ -3,13 +3,18 @@
 -- (c) 2013 charles feng (https://github.com/charlesfeng)
 -- shared under the mit license (http://www.opensource.org/licenses/mit)
 
+import Data.Char
 import Data.List
 import Data.Ord
 
 val :: Char -> Int
 val n
-  | n == '2' = 0 | n == '3' = 1 | n == '4' = 2 | n == '5' = 3  | n == '6' = 4  | n == '7' = 5  | n == '8' = 6
-  | n == '9' = 7 | n == 'T' = 8 | n == 'J' = 9 | n == 'Q' = 10 | n == 'K' = 11 | n == 'A' = 12 | otherwise = -1
+  | n == 'T' = 10
+  | n == 'J' = 11
+  | n == 'Q' = 12
+  | n == 'K' = 13
+  | n == 'A' = 14
+  | otherwise = digitToInt n
 
 score :: [[Char]] -> [Int]
 score list
