@@ -3,9 +3,10 @@
 -- (c) 2013 charles feng (https://github.com/charlesfeng)
 -- shared under the mit license (http://www.opensource.org/licenses/mit)
 
-module Primes (primes, isPrime, isPrime') where
+module Primes (primes, isPrime, isPrime', isPrimeMR) where
 
 import Data.Array.Unboxed
+import Mod
 
 primes :: Int -> [Int]
 primes n = 2 : [ x | x <- [3, 5 .. n], ps ! x ]
@@ -21,8 +22,28 @@ primes n = 2 : [ x | x <- [3, 5 .. n], ps ! x ]
         t  = [ i | i <- [p + 2, p + 4 .. n], a' ! i ]
 
 isPrime :: Int -> Bool
-isPrime n = all (\a -> n `mod` a /= 0) ps
+isPrime n = all (\a -> (n `mod` a /= 0) || (n == a)) ps
   where ps = primes $ (ceiling . sqrt . fromIntegral) n
 
 isPrime' :: Int -> [Int] -> Bool
-isPrime' n ps = all (\a -> n `mod` a /= 0) ps
+isPrime' n ps = all (\a -> (n `mod` a /= 0) || (n == a)) ps
+
+isPrimeMR :: Integer -> Integer -> Bool
+isPrimeMR n a
+  | n < 2   || even n   = False
+  | b0 == 1 || b0 == n' = True
+  | otherwise           = iter (tail b)
+  where 
+    n'     = n - 1
+    (k, m) = aux 0 n'
+    b0     = modPow a m n
+    b      = take (fromIntegral k) $ iterate (\x -> (x * x) `rem` n) b0
+    aux k m
+      | r == 1     = (k, m)
+      | otherwise  = aux (k + 1) q
+      where (q, r) = quotRem m 2
+    iter [] = False
+    iter (x : xs)
+      | x == 1     = False
+      | x == n'    = True
+      | otherwise  = iter xs
