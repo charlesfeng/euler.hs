@@ -26,9 +26,9 @@ isPrime n = all (\a -> (n `mod` a /= 0) || (n == a)) ps
   where ps = primes $ (ceiling . sqrt . fromIntegral) n
 
 isPrime' :: Int -> [Int] -> Bool
-isPrime' n ps = all (\a -> (n `mod` a /= 0) || (n == a)) ps
+isPrime' n ps = all (\a -> (n `mod` a /= 0) || (n == a)) $ takeWhile (< (ceiling . sqrt . fromIntegral) n) ps
 
-isPrimeMR :: Integer -> Integer -> Bool
+isPrimeMR :: (Integral a, Show a) => a -> a -> Bool
 isPrimeMR n a
   | n < 2   || even n   = False
   | b0 == 1 || b0 == n' = True
