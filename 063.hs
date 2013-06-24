@@ -4,8 +4,8 @@
 -- shared under the mit license (http://www.opensource.org/licenses/mit)
 
 main = do
-  print $ 1 + (length . concat) [ map (snd) $
-    takeWhile (\a -> (length . show . snd $ a) == (fst a)) [ (n, x ^ n) | n <- [1 ..] ] | x <- [2 .. 9] ]
+  print $ (length . concat) [ map (snd) $
+    takeWhile (\a -> (length . show . snd $ a) == (fst a)) [ (n, x ^ n) | n <- [1 ..] ] | x <- [1 .. 9] ]
 
 -- answer: 49
 -- runtime: 0.2s
