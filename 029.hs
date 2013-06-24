@@ -3,10 +3,10 @@
 -- (c) 2013 charles feng (https://github.com/charlesfeng)
 -- shared under the mit license (http://www.opensource.org/licenses/mit)
 
-import Data.List
+import Data.Set (fromList, size)
 
 main = do
-  print $ (length . nub) [ a ^ b | a <- [2 .. 100], b <- [2 .. 100] ]
+  print $ (size . fromList) [ a ^ b | a <- [2 .. 100], b <- [2 .. 100] ]
 
 -- answer: 9183
--- runtime: 1.1s
+-- runtime: 0.2s
