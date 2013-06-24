@@ -8,7 +8,7 @@ import Data.Char
 
 main = do
   print $ sum $ map (digitToInt) $ show $ numerator $ 2 + (recip $ foldl (\a x -> (x % 1) + (recip a)) (head frac % 1) (tail frac))
-  where frac = map (toInteger) $ reverse $ (concat [ [1, 2 * x, 1] | x <- [1 .. 33] ]) ++ [1]
+  where frac = map (toInteger) $ reverse $ (concat [ [1, 2 * x, 1] | x <- [1 .. 33] ])
 
 -- answer: 255
 -- runtime: 0.2s
