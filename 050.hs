@@ -15,7 +15,13 @@ ss  = scanl (+) 0 ps
 sss = listArray (0, length ss - 1) ss
 
 main = do
-  print $ snd $ maximumBy (comparing fst) $ [ (y - x + 1, d) | x <- [0 .. length ss - 2], y <- [x + 1 .. length ss - 1], let d = (sss ! y) - (sss ! x), d < 1000000, d `member` sps ]
+  print $ snd $ maximumBy (comparing fst) $
+    [ (y - x + 1, d)
+    | x <- [0 .. length ss - 2]
+    , y <- [x + 1 .. length ss - 1]
+    , let d = (sss ! y) - (sss ! x)
+    , d < 1000000
+    , d `member` sps ]
 
 -- answer: 997651
 -- runtime: 13.7s
