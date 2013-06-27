@@ -18,10 +18,10 @@ main = do
   print $ snd $ maximumBy (comparing fst) $
     [ (y - x + 1, d)
     | x <- [0 .. length ss - 2]
-    , y <- [x + 1 .. length ss - 1]
+    , y <- if x == 0 then [1, 3 .. length ss - 1] else [x + 1, x + 3 .. length ss - 1]
     , let d = (sss ! y) - (sss ! x)
     , d < 1000000
     , d `member` sps ]
 
 -- answer: 997651
--- runtime: 13.7s
+-- runtime: 7.4s
