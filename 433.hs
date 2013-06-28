@@ -20,7 +20,9 @@ gen l = concat [ filter (/= (0, 0)) [g1, g2, g3]
                , let g3 = if m + 2 * n <= s then (m + 2 * n, n) else (0, 0) ]
 
 main = do
-  print $ sum $ [ snd $ euc (x, y) | x <- [1 .. s], y <- [1 .. s] ]
+  print $ s +
+    (foldl' (\a l -> a + eucs l) 0 $ takeWhile (/= []) $ iterate (gen) [(2, 1)]) +
+    (foldl' (\a l -> a + eucs l) 0 $ takeWhile (/= []) $ iterate (gen) [(3, 1)])
 
 -- answer: 
 -- runtime: 
