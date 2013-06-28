@@ -3,19 +3,15 @@
 -- (c) 2013 charles feng (https://github.com/charlesfeng)
 -- shared under the mit license (http://www.opensource.org/licenses/mit)
 
+import Data.Array
 import Data.List
 
-s = 1000
+s = 10000
 
-euc (x, y) = euc' (x, y) 0
-  where euc' (x, y) n = if y == 0 then n else euc' (y, x `mod` y) (n + 1)
+euc = (listArray ((0, 0), (s, s)) [ ((x, y), euc' x y) | x <- [0 .. s], y <- [0 .. s] ] !)
+  where euc' x y = if y == 0 then 0 else 1 + (snd $ euc (y, x `mod` y))
 
-eucs = foldl' (\a (m, n) -> a + (s `div` m) * (euc (m, n) + euc (n, m))) 0
-
-rels (m, n) = (s `div` m) * (euc (m, n) + euc (n, m)) +
-  (if 2 * m - n <= s then rels (2 * m - n, m) else 0) +
-  (if 2 * m + n <= s then rels (2 * m + n, m) else 0) +
-  (if m + 2 * n <= s then rels (m + 2 * n, n) else 0)
+eucs = foldl' (\a (m, n) -> a + (s `div` m) * ((snd $ euc (m, n)) + (snd $ euc (n, m)))) 0
 
 gen l = concat [ filter (/= (0, 0)) [g1, g2, g3]
                | (m, n) <- l
@@ -24,10 +20,7 @@ gen l = concat [ filter (/= (0, 0)) [g1, g2, g3]
                , let g3 = if m + 2 * n <= s then (m + 2 * n, n) else (0, 0) ]
 
 main = do
-  print $ s +
-    (foldl' (\a l -> a + eucs l) 0 $ takeWhile (/= []) $ iterate (gen) [(2, 1)]) +
-    (foldl' (\a l -> a + eucs l) 0 $ takeWhile (/= []) $ iterate (gen) [(3, 1)])
-  --print $ foldl1' (+) [ euclid x y | x <- [1 .. 100], y <- [1 .. 100] ]
+  print $ sum $ [ snd $ euc (x, y) | x <- [1 .. s], y <- [1 .. s] ]
 
 -- answer: 
 -- runtime: 
