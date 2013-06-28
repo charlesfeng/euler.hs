@@ -6,16 +6,13 @@
 import Data.Array
 import Data.List
 
-s = 1000
+s = 100
 
-euc x y = a ! (x, y)
-  where a  = a' // [ ((i * x, i * y), e x y) | i <- [1 .. s `div` x] ]
-        a' = listArray ((0, 0), (s, s)) [ ((i, j), snd $ euc i j) | i <- [0 .. s], j <- [0 .. s] ]
-        e x y = if y == 0 then 0 else 1 + (snd $ euc y $ x `mod` y)
+euc = (listArray ((0, 0), (s, s)) [ ((x, y), euc' x y) | x <- [0 .. s], y <- [0 .. s] ] !)
+  where euc' x y = if y == 0 then 0 else 1 + (snd $ euc (y, x `mod` y))
 
 main = do
-  print $ euc 10 6
-  --print $ 2 * (sum [ snd $ euc (x, y) | x <- [2 .. s], y <- [1 .. x - 1] ]) + (s - 1) * s `div` 2 + s
+  print $ 2 * (sum [ snd $ euc (x, y) | x <- [2 .. s], y <- [1 .. x - 1] ]) + (s - 1) * s `div` 2 + s
 
 -- answer: 
 -- runtime: 
